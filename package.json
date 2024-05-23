@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fundamentus-unofficial-api": "^1.2.2",
+    "jsdom": "^24.0.0"
+  }
+}

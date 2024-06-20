@@ -1,14 +1,23 @@
 const path = require('path');
 const fs = require('fs');
 const xlsx = require('xlsx');
+const xl = require('excel4node');
 
-module.exports = async function convertePlanilha(dados) {
-    const { dadosPlanilha, nomePlanilha, caminhoPlanilha } = dados;
+module.exports = async function convertePlanilha(dadosConfig) {
+    const { nomePlanilha, caminhoPlanilha, caminhoJson } = dadosConfig;
     const filePath = path.join(caminhoPlanilha, `${nomePlanilha}.xlsx`);
-    
+    const jsonPath = path.join(caminhoJson);
+
+    // Lê os dados do arquivo JSON
+    let dadosPlanilha = [];
+    if (fs.existsSync(jsonPath)) {
+        const rawdata = fs.readFileSync(jsonPath);
+        dadosPlanilha = JSON.parse(rawdata);
+    }
+
     let existingData = [];
 
-    // Verifica se o arquivo já existe
+    // Verifica se o arquivo Excel já existe
     if (fs.existsSync(filePath)) {
         // Lê o arquivo existente
         const file = xlsx.readFile(filePath);
@@ -18,7 +27,7 @@ module.exports = async function convertePlanilha(dados) {
     }
 
     // Adiciona os títulos das colunas se não existirem
-    if (existingData.length === 0) {
+    if (existingData.length === 0 && dadosPlanilha.length > 0) {
         const titulos = Object.keys(dadosPlanilha[0]);
         existingData.push(titulos);
     }
@@ -29,8 +38,7 @@ module.exports = async function convertePlanilha(dados) {
         existingData.push(newRow);
     });
 
-    // Cria um novo workbook e worksheet usando excel4node
-    const xl = require('excel4node');
+    // Cria um novo workbook e worksheet
     const wb = new xl.Workbook();
     const ws = wb.addWorksheet(nomePlanilha);
 

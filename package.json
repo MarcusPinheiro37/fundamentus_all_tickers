@@ -1,6 +1,35 @@
 {
+  "name": "fundamentus_all_tickers",
+  "description": "Um uso da fundamentus_unnoficial_api para listar todas os tickers detalhadamente\r Agradecimentos ao criador da biblioteca citada acima",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcusPinheiro37/fundamentus_all_tickers.git"
+  },
+  "keywords": [
+    "Fundamentus",
+    "Bolsa",
+    "de",
+    "valores"
+  ],
+  "author": "Marcus Pinheiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcusPinheiro37/fundamentus_all_tickers/issues"
+  },
+  "homepage": "https://github.com/MarcusPinheiro37/fundamentus_all_tickers#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "excel4node": "^1.8.2",
     "fundamentus-unofficial-api": "^1.2.2",
-    "jsdom": "^24.0.0"
+    "jsdom": "^24.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.46.0"
   }
 }

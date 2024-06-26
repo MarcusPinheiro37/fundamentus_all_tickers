@@ -3,7 +3,7 @@
 
 ## Descrição
 
-Este projeto utiliza Node.js para extrair informações sobre Fundos Imobiliários e Empresas listadas no site Fundamentus. Utiliza bibliotecas como Puppeteer para navegação e extração de dados, além de salvar esses dados em JSON e planilhas Excel para análises futuras.
+Este projeto utiliza Node.js para extrair informações sobre Fundos Imobiliários e Empresas listadas no site Fundamentus. Utiliza bibliotecas como jsdom e fundamentus-unofficial-api para navegação e extração de dados, além de salvar esses dados em JSON e planilhas Excel para análises futuras.
 
 ## Estrutura do Projeto
 
